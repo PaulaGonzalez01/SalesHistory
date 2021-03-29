@@ -3,7 +3,8 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    # ex: /polls/
-    path('', views.ticket_promedio, name='ticket_promedio'),
 
+    path('', views.indicadores, name='indicadores'),
+    path('tablas/', views.tablas, name='tablas'),
+    path('lineatiempo/', views.visualizador, name='visualizador'),
 ]
