@@ -34,6 +34,3 @@ class OrderProduct(models.Model):
     order_id = models.ForeignKey(Order, on_delete=models.CASCADE)
     product_id = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.IntegerField()
-
-    def __str__(self):
-        return self.order_id

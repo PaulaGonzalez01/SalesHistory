@@ -88,7 +88,7 @@ def indicadores(request):
 
 def tablas(request):
     context = {
-        'top_dep': dic_productos_departamentos(),
+        'top_dep': dic_productos_departamentos().items(),
         'n': range(5),
     }
     return render(request, 'salesHistory/tablas.html', context)
