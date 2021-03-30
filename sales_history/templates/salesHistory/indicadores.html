@@ -1,0 +1,17 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'salesHistory/style.css' %}">
+
+{% if ticket %}
+<ul>
+
+    <li><a href="/salesHistory/tablas/"> Ver tablas </a></li>
+    <p> Los indicadores son los siguientes: </p>
+    <p> Ticket promedio (USD): {{ticket}} </p>
+    <p> Margen promedio (USD): {{margin}} </p>
+    <p> Cantidad promedio (USD): {{quantity}} </p>
+
+</ul>
+{% else %}
+<p>No hay indicadores disponibles</p>
+{% endif %}

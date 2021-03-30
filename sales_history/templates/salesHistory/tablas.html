@@ -1,0 +1,19 @@
+<li><a href="/salesHistory/lineatiempo/"> Ver linea de tiempo </a></li>
+<table>
+    <tr>
+        {% for department in top_dep %}
+        <th>{{department.department}}</th>
+        {% endfor %}
+    </tr>
+
+    {% for i in n %}
+    <tr>
+
+        {% for dep in top_dep %}
+        <td>{{top_dep.dep.i}}</td>
+        {% endfor %}
+
+    </tr>
+    {% endfor %}
+
+</table>

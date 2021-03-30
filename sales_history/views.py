@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Product, OrderProduct, Department
 from django.http import HttpResponse
+from django.template import loader
 import heapq
 from operator import itemgetter
 
@@ -68,16 +69,30 @@ def dic_productos_departamentos():
         departments_with_products[department_products] = dict(heapq.nlargest(
             5, departments_with_products[department_products].items(), key=itemgetter(1)))
 
+    for department in departments_with_products:
+
+        departments_with_products[department] = list(
+            departments_with_products[department])
+
     return departments_with_products
 
 
-def indicadores(request):  # retornahttpresponse
-    return HttpResponse("Hey1")
+def indicadores(request):
+    context = {
+        'ticket': ticket_promedio(),
+        'margin': margen_promedio(),
+        'quantity': cantidad_promedio(),
+    }
+    return render(request, 'salesHistory/indicadores.html', context)
 
 
-def tablas(request):  # retornahttpresponse
-    return HttpResponse("Hey1")
+def tablas(request):
+    context = {
+        'top_dep': dic_productos_departamentos(),
+        'n': range(5),
+    }
+    return render(request, 'salesHistory/tablas.html', context)
 
 
-def visualizador(request):  # retornahttpresponse
-    return HttpResponse("Hey1")
+def visualizador(request):
+    return render(request, 'salesHistory/lineaTiempo.html', context)
